@@ -1,4 +1,3 @@
-// profile/profile.module.ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProfileInfo, ProfileInfoSchema } from '../schemas/profile.schema';

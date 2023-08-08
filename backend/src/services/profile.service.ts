@@ -17,23 +17,17 @@ export class ProfileService {
     return profile;
   }
 
-  async updateProfileInfo(
-    updatedProfileInfo: ProfileInfo,
-  ): Promise<ProfileInfo> {
-    const existingProfile = await this.profileModel.findOne().exec();
-    if (!existingProfile) {
-      throw new NotFoundException('Profile information not found.');
-    }
+  async createProfileInfo(profileInfo: ProfileInfo): Promise<ProfileInfo> {
+    const newProfile = new this.profileModel(profileInfo);
+    return newProfile.save();
+  }
 
-    // Actualizar las propiedades del documento existente con los valores de updatedProfileInfo
-    existingProfile.name = updatedProfileInfo.name;
-    existingProfile.title = updatedProfileInfo.title;
-    existingProfile.summary = updatedProfileInfo.summary;
-    existingProfile.contactLinks = updatedProfileInfo.contactLinks;
-
-    // Guardar el documento actualizado en la base de datos
-    const updatedProfile = await existingProfile.save();
-
-    return updatedProfile;
+  async editProfileInfo(editedInfo: ProfileInfo): Promise<ProfileInfo> {
+    const profile = await this.profileModel.findOne().exec();
+    profile.name = editedInfo.name;
+    profile.title = editedInfo.title;
+    profile.summary = editedInfo.summary;
+    profile.contactLinks = editedInfo.contactLinks;
+    return profile.save();
   }
 }

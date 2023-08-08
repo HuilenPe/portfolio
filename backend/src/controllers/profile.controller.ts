@@ -1,29 +1,22 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import { ProfileService } from '../services/profile.service';
 
 @Controller('profile')
 export class ProfileController {
-  //para obtener información básica
+  constructor(private readonly profileService: ProfileService) {}
+  //para traer la info
   @Get()
   getProfileInfo() {
-    const profileInfo = {
-      name: '',
-      titulo: '',
-      summary: '',
-      contactLinks: [
-        { platform: 'LinkedIn', link: '' },
-        { platform: 'GitHub', link: '' },
-      ],
-    };
-
-    return profileInfo;
+    return this.profileService.getProfileInfo();
   }
-  //para actualizar la información personal
+  //para crear la info
   @Post()
-  updateProfileInfo(@Body() updatedInfo) {
-    // 1. Buscar el documento correspondiente en la base de datos
-    // 2. Actualizar los campos que se recibieron en el objeto "updatedInfo"
-    // 3. Guardar el documento actualizado en la base de datos
-    // Por simplicidad, en este ejemplo, simplemente devolvemos el objeto actualizado
-    return updatedInfo;
+  createProfile(@Body() profileInfo) {
+    return this.profileService.createProfileInfo(profileInfo);
+  }
+  //para editar la info
+  @Patch()
+  editProfileInfo(@Body() editedInfo) {
+    return this.profileService.editProfileInfo(editedInfo);
   }
 }
