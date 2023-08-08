@@ -1,10 +1,10 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AdminService } from '../services/admin.service';
 
-@Controller('admins')
+@Controller('admin')
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
-
+  //para crear un admin
   @Post()
   async createAdmin(
     @Body() body: { username: string; password: string },
