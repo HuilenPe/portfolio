@@ -25,9 +25,9 @@ export class ProfileController {
     }
   }
   //para editar la info
-  @Patch()
   @UseGuards(RolesGuard)
   @Roles('Admin')
+  @Patch()
   editProfileInfo(@Body() editedInfo) {
     try {
       return this.profileService.editProfileInfo(editedInfo);
