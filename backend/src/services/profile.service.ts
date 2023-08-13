@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { ProfileInfo } from '../schemas/profile.schema';
@@ -19,6 +23,14 @@ export class ProfileService {
   }
 
   async createProfileInfo(profileInfo: ProfileInfo): Promise<ProfileInfo> {
+    // Verificar si ya existe un perfil en la base de datos
+    const existingProfile = await this.profileModel.findOne().exec();
+
+    if (existingProfile) {
+      console.log('A profile already exists:', existingProfile);
+      throw new ConflictException('Ya existe un perfil en el sistema');
+    }
+
     const newProfile = new this.profileModel(profileInfo);
     console.log('Creating new profile:', newProfile);
     return newProfile.save();
