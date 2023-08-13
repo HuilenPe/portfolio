@@ -9,7 +9,15 @@ export class AdminService {
   constructor(@InjectModel(Admin.name) private adminModel: Model<Admin>) {}
 
   async findByUsername(username: string): Promise<Admin | null> {
-    return this.adminModel.findOne({ username }).exec();
+    const foundAdmin = await this.adminModel.findOne({ username }).exec();
+
+    if (foundAdmin) {
+      console.log('Found admin:', foundAdmin);
+    } else {
+      console.log('Admin not found for username:', username);
+    }
+
+    return foundAdmin;
   }
 
   async createAdmin(username: string, password: string): Promise<void> {
@@ -17,6 +25,7 @@ export class AdminService {
     const existingAdmin = await this.adminModel.findOne().exec();
 
     if (existingAdmin) {
+      console.log('An admin already exists:', existingAdmin);
       throw new ConflictException('Ya existe un administrador en el sistema');
     }
 
@@ -26,6 +35,7 @@ export class AdminService {
       passwordHash,
     });
 
+    console.log('Creating new admin:', newAdmin);
     await newAdmin.save();
   }
 }

@@ -3,17 +3,23 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProfileInfo, ProfileInfoSchema } from '../schemas/profile.schema';
 import { ProfileController } from '../controllers/profile.controller';
 import { ProfileService } from '../services/profile.service';
+import { RolesGuard } from '../guards/roles.guard';
+import { JwtModule } from '@nestjs/jwt';
+import { AuthService } from '../services/auth.service';
+import { AdminModule } from './admin.module';
 
 @Module({
-  //agregamos el módulo
   imports: [
-    //agregamos el módulo de mongoose
     MongooseModule.forFeature([
-      //agregamos el feature
-      { name: ProfileInfo.name, schema: ProfileInfoSchema }, //agregamos el schema
+      { name: ProfileInfo.name, schema: ProfileInfoSchema },
     ]),
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '1h' },
+    }),
+    AdminModule, // Si es necesario debido a la dependencia
   ],
-  controllers: [ProfileController], //agregamos el controlador
-  providers: [ProfileService], //agregamos el servicio
+  controllers: [ProfileController],
+  providers: [ProfileService, AuthService, RolesGuard],
 })
 export class ProfileModule {}

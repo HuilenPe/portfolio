@@ -8,6 +8,9 @@ export class Admin extends Document {
 
   @Prop({ required: true })
   passwordHash: string;
+
+  @Prop({ type: [String], default: [] }) // Campo para los roles
+  roles: string[];
 }
 
 export const AdminSchema = SchemaFactory.createForClass(Admin);

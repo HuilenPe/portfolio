@@ -15,16 +15,22 @@ export class AuthService {
     const admin = await this.adminService.findByUsername(username);
 
     if (admin && (await bcrypt.compare(pass, admin.passwordHash))) {
-      //compara la contraseña ingresada con la contraseña hasheada
-      const token = await this.generateToken(admin.id); //genera el token
-      return token; //devuelve el token
+      const token = await this.generateToken(admin.id);
+
+      console.log('Generated token:', token); // Agregar este console.log
+
+      return token;
     }
 
     throw new InvalidCredentialsException();
   }
 
   async generateToken(adminId: number): Promise<string> {
-    const payload = { sub: adminId };
+    const roles = ['Admin']; // Asignar el rol "Admin"
+    const payload = { sub: adminId, roles };
+
+    console.log('Payload for token:', payload); // Agregar este console.log
+
     return this.jwtService.sign(payload);
   }
 }

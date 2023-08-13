@@ -18,6 +18,7 @@ export class AuthController {
     if (!token) {
       throw new InvalidCredentialsException();
     }
-    return { access_token: token }; //devuelve el token como respuesta
+
+    return { access_token: token };
   }
 }

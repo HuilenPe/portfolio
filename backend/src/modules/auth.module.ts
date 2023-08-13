@@ -10,14 +10,9 @@ import { AdminModule } from './admin.module';
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1h' },
     }),
-    AdminModule,
+    AdminModule, // Si es necesario debido a la dependencia
   ],
   controllers: [AuthController],
   providers: [AuthService],
-  exports: [AuthService],
 })
-export class AuthModule {
-  constructor() {
-    console.log('JWT Secret:', process.env.JWT_SECRET);
-  }
-}
+export class AuthModule {}

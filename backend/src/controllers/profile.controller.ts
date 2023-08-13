@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post, UseGuards } from '@nestjs/common';
 import { ProfileService } from '../services/profile.service';
 import { OperationException } from 'src/exceptions/bad-request.exception';
+import { RolesGuard } from '../guards/roles.guard';
+import { Roles } from 'src/decorator/roles.decorator';
 
 @Controller('profile')
 export class ProfileController {
@@ -11,6 +13,9 @@ export class ProfileController {
     return this.profileService.getProfileInfo();
   }
   //para crear la info
+
+  @UseGuards(RolesGuard)
+  @Roles('Admin')
   @Post()
   createProfile(@Body() profileInfo) {
     try {
@@ -21,6 +26,8 @@ export class ProfileController {
   }
   //para editar la info
   @Patch()
+  @UseGuards(RolesGuard)
+  @Roles('Admin')
   editProfileInfo(@Body() editedInfo) {
     try {
       return this.profileService.editProfileInfo(editedInfo);

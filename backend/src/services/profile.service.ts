@@ -12,6 +12,7 @@ export class ProfileService {
   async getProfileInfo(): Promise<ProfileInfo> {
     const profile = await this.profileModel.findOne().exec();
     if (!profile) {
+      console.log('Profile information not found.');
       throw new NotFoundException('Profile information not found.');
     }
     return profile;
@@ -19,15 +20,23 @@ export class ProfileService {
 
   async createProfileInfo(profileInfo: ProfileInfo): Promise<ProfileInfo> {
     const newProfile = new this.profileModel(profileInfo);
+    console.log('Creating new profile:', newProfile);
     return newProfile.save();
   }
 
   async editProfileInfo(editedInfo: ProfileInfo): Promise<ProfileInfo> {
     const profile = await this.profileModel.findOne().exec();
+    if (!profile) {
+      console.log('Profile information not found.');
+      throw new NotFoundException('Profile information not found.');
+    }
+
     profile.name = editedInfo.name;
     profile.title = editedInfo.title;
     profile.summary = editedInfo.summary;
     profile.contactLinks = editedInfo.contactLinks;
+
+    console.log('Editing profile:', profile);
     return profile.save();
   }
 }
