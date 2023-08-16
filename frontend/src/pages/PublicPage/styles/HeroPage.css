@@ -109,7 +109,7 @@ h1 {
 
 .transition-plane.second-half {
   top: 50%; 
-  background-color: #000; 
+  background-color: #83b8aa; 
   transform: translateX(-100%);
 }
 
@@ -122,4 +122,5 @@ h1 {
   opacity: 1;
   transform: translateX(0);
 }
+
 

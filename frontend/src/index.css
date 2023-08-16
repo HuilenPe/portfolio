@@ -4,9 +4,14 @@
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: 'League Spartan Light';
+  src: url('../src/assets/fonts/static/LeagueSpartan-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  font-family: 'League Spartan', sans-serif;
+  font-family: 'League Spartan';
   margin: 0;
   padding: 0;
   background-color: #ff6a5a;
