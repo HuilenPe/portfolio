@@ -9,4 +9,15 @@ body {
   font-family: 'League Spartan', sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #ff6a5a;
+}
+
+:root {
+  --color1: #272d4d;
+  --color2: #b83564;
+  --color3: #ff6a5a;
+  --color4: #ffb350;
+  --color5: #83b8aa;
+  --color6: #f1efe7;
+
 }
