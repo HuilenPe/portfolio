@@ -1,7 +1,14 @@
+import Footer from '../../components/Public/Footer'
+import Header from '../../components/Public/Header'
+import Summary from '../../components/Public/Summary'
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <>
+      <Header />
+      <Summary/>
+      <Footer />
+    </>
   )
 }
 
