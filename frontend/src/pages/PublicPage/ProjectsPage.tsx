@@ -1,7 +1,10 @@
+import Header from "../../components/Public/Header"
 
 function ProjectsPage() {
   return (
-    <div>ProjectsPage</div>
+    <>
+      <Header />
+    </>
   )
 }
 

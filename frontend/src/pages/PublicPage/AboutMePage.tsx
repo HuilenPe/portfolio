@@ -1,6 +1,12 @@
+import Header from "../../components/Public/Header"
+import Summary from "../../components/Public/Summary"
+
 function AboutMePage() {
   return (
-    <div>AboutMePage</div>
+    <>
+      <Header />
+      <Summary />
+    </>
   )
 }
 
