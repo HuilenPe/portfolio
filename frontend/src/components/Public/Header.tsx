@@ -26,9 +26,9 @@ function Header() {
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav box" className={`menu-collapse ${isMenuOpen ? 'show' : ''}`}>
             <Nav className="ms-auto">
-              <Link to="/home">INICIO</Link>
-              <Link to="/about">SOBRE MI</Link>
-              <Link to="/projects">PROYECTOS</Link>
+              <Link to="/home" className="menu-link">INICIO</Link>
+              <Link to="/about" className="menu-link">SOBRE MI</Link>
+              <Link to="/projects" className="menu-link">PROYECTOS</Link>
               <Collapse in={isMenuOpen}>
                 <div className="footer-content">
                   <Link to="mailto:huilenpe@gmail.com" style={{ color: 'black', marginRight:"30px"}}>
