@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Navbar, Container, Nav, Collapse } from 'react-bootstrap';
-import { MdMenu, MdClose } from 'react-icons/md'; // Importa los íconos
+import { MdMenu, MdClose } from 'react-icons/md';
 import '../../components/Public/styles/Header.css';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -18,7 +18,9 @@ function Header() {
         <Container>
           <Navbar.Brand href="#home">
             <div >
-              <h1 className='h-logo'>h.</h1>
+              <Link to="/home" className="hover">
+                <h1 className='h-logo'>h.</h1>
+              </Link>
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={toggleMenu}>
@@ -27,8 +29,8 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav box" className={`menu-collapse ${isMenuOpen ? 'show' : ''}`}>
             <Nav className="ms-auto">
               <Link to="/home" className="menu-link">INICIO</Link>
-              <Link to="/about" className="menu-link">SOBRE MI</Link>
               <Link to="/projects" className="menu-link">PROYECTOS</Link>
+              <Link to="/about" className="menu-link">SOBRE MI</Link>
               <Collapse in={isMenuOpen}>
                 <div className="footer-content">
                   <Link to="mailto:huilenpe@gmail.com" style={{ color: 'black', marginRight:"30px"}}>
