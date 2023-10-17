@@ -4,7 +4,6 @@ import { MdMenu, MdClose } from 'react-icons/md';
 import '../../components/Public/styles/Header.css';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -17,7 +16,7 @@ function Header() {
       <Navbar expand="lg" className={`menu-open-${isMenuOpen ? 'true' : 'false'}`}>
         <Container>
           <Navbar.Brand href="#home">
-            <div >
+            <div>
               <Link to="/home" className="hover">
                 <h1 className='h-logo'>h.</h1>
               </Link>
@@ -33,7 +32,7 @@ function Header() {
               <Link to="/about" className="menu-link">SOBRE MI</Link>
               <Collapse in={isMenuOpen}>
                 <div className="footer-content">
-                  <Link to="mailto:huilenpe@gmail.com" style={{ color: 'black', marginRight:"30px"}}>
+                  <Link to="mailto:huilenpe@gmail.com" style={{ color: 'black', marginRight: "30px" }}>
                     <FaEnvelope size={20} />
                   </Link>
                   <Link to="https://www.linkedin.com/in/huilen-pe" target="_blank" rel="noopener noreferrer" style={{ color: 'black' }}>
@@ -42,7 +41,6 @@ function Header() {
                   <Link to="https://github.com/HuilenPe" target="_blank" rel="noopener noreferrer" style={{ color: 'black', marginLeft: "30px" }}>
                     <FaGithub size={20} />
                   </Link>
-
                 </div>
               </Collapse>
             </Nav>
