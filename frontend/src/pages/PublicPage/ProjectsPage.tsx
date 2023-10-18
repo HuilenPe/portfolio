@@ -1,6 +1,6 @@
-import Header from "../../components/Public/Header"
+import Header from '../../components/Public/Header'
 
-function ProjectsPage() {
+function ProjectsPage () {
   return (
     <>
       <Header />
