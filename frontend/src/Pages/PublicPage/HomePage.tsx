@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
-import Header from '../../components/Public/Header'
+import Header from '@/components/Public/Header'
 import './styles/HomePage.css'
 
 const colors = ['#83b8aa', '#ffb350', '#b83564', '#ffb350', '#272d4d']

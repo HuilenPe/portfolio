@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navbar, Container, Nav, Collapse } from 'react-bootstrap'
 import { MdMenu, MdClose } from 'react-icons/md'
-import '../../components/Public/styles/Header.css'
+import '@/components/Public/styles/Header.css'
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 function Header () {

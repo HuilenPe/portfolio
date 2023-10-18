@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Profile, getProfileInfo } from '../../services/api'
+import { Profile, getProfileInfo } from '@/services/api'
 import '../Public/styles/Summary.css'
 
 function Summary () {
